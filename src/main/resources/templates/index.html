@@ -1,3 +1,6 @@
+<!--Vanessa Victorino - 301201653-->
+<!--05OCT24-->
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
@@ -6,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Online Smart Phone Order Request</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
-   <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="style.css">  
 </head>
 
 <body>
@@ -17,7 +20,7 @@
             <input type="text" id="name" name="name" placeholder="Enter your full name" required>
 
             <label for="email">Email Address:</label>
-            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            <input type="email" id="email" name="email" pattern="a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" placeholder="Enter your email" required>
 
             <label for="phone">Phone Number:</label>
             <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890" required>
@@ -36,12 +39,7 @@
 
             <label for="model">Phone Model:</label>
             <select id="model" name="model" required>
-                <option value="">Select a model</option>
-                <option value="iPhone XR">iPhone XR</option>
-                <option value="iPhone 11 Pro">iPhone 11 Pro</option>
-                <option value="Samsung Galaxy 20 Plus">Samsung Galaxy 20 Plus</option>
-                <option value="Samsung Galaxy S20">Samsung Galaxy S20</option>
-                <!-- Add more models -->
+            <option value="">Select a model</option>
             </select>
 
             <label for="quantity">Quantity:</label>
@@ -51,11 +49,68 @@
             <input type="number" id="price" name="price" min="1" step="0.01" placeholder="Enter phone price" required>
 
             <div class="btn">
-                <button type="reset">Reset</button>
-                <button type="submit">Submit Order</button>
+                <button id="rBTn" type="reset">Reset</button>
+                <button id="sBtn" type="submit">Submit Order</button>
             </div>
         </form>
     </main>
+
+    <script src="script.js" defer></script>
+      
+	<script>
+        // Define phone models based on brands
+        
+        const phoneModels = {
+            "iPhone": [
+                { value: "iPhone XR", text: "iPhone XR" },
+                { value: "iPhone 11 Pro", text: "iPhone 11 Pro" }
+            ],
+            "Samsung": [
+                { value: "Samsung Galaxy 20 Plus", text: "Samsung Galaxy 20 Plus" },
+                { value: "Samsung Galaxy S20", text: "Samsung Galaxy S20" }
+            ],
+            "Google": [
+                { value: "Google Pixel 5", text: "Google Pixel 5" },
+                { value: "Google Pixel 6", text: "Google Pixel 6" }
+            ],
+            "Blackberry": [
+                { value: "Blackberry Key2", text: "Blackberry Key2" },
+                { value: "Blackberry Motion", text: "Blackberry Motion" }
+            ]
+        };
+
+        function updateModels() {
+            const brandSelect = document.getElementById('brand');
+            const modelSelect = document.getElementById('model');
+            const selectedBrand = brandSelect.value;
+
+            // Clear the existing model options
+            modelSelect.innerHTML = '<option value="">Select a model</option>';
+
+            if (selectedBrand && phoneModels[selectedBrand]) {
+                // Populate the model dropdown with the selected brand's models
+                phoneModels[selectedBrand].forEach(function(model) {
+                    const option = document.createElement('option');
+                    option.value = model.value;
+                    option.text = model.text;
+                    modelSelect.appendChild(option);
+                });
+            }
+        }
+
+        // Add the event listener when the DOM is fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            const brandSelect = document.getElementById('brand');
+            brandSelect.addEventListener('change', updateModels);  // Call `updateModels` when brand changes
+        });
+	  
+        const brandSelect = document.getElementById('brand');
+        brandSelect.addEventListener('change', function() {
+            console.log("Brand selected");
+        });
+        
+    </script>
 </body>
+
 
 </html>

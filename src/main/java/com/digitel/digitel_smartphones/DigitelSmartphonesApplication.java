@@ -1,5 +1,8 @@
 package com.digitel.digitel_smartphones;
 
+//Vanessa Victorino - 301201653
+//04OCT24
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;

@@ -1,3 +1,6 @@
+<!--Vanessa Victorino - 301201653-->
+<!--05OCT24-->
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
@@ -6,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Order Details</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
-   <link rel="stylesheet" href="app.css">
+     <link rel="stylesheet" href="/css/style.css">  
 </head>
 
 <body>
@@ -14,15 +17,16 @@
         <h1>Welcome, <span th:text="${order.name}">Max</span></h1>
         <p>Your order details are as follows:</p>
         <p>Email Address: <span th:text="${order.email}">amax@yahoo.com</span></p>
-        <p>Phone Number: <span th:text="${order.phone}">600-900-8000</span></p>
+        <p>Phone Number: <span th:text="${order.phone}">123-456-7890</span></p>
         <p>Address: <span th:text="${order.address}">18 Progress Ave, Scarborough, ON</span></p>
         <h2>Phone Details</h2>
         <p>Phone Brand: <span th:text="${order.brand}">iPhone</span></p>
         <p>Phone Model: <span th:text="${order.model}">iPhone XR</span></p>
-        <p>Phone Price: CAD <span th:text="${order.price}">979.00</span></p>
+        <p>Phone Price:<span th:text="${order.price}">979.00</span> CAD</p>
         <p>Quantity: <span th:text="${order.quantity}">2</span></p>
-        <p>Total: CAD <span th:text="${totalPrice}">1958.00</span></p>
+        <p>Total: <span th:text="${order.formattedTotalPrice}">1958.00</span> CAD</p>
     </main>
+    <script src="/js/script.js" defer></script>
 </body>
 
 </html>

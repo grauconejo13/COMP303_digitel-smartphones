@@ -1,6 +1,12 @@
 package com.digitel.digitel_smartphones;
 
-//import jakarta.validation.*;
+//Vanessa Victorino - 301201653
+//01OCT24
+
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+
 
 public class Order {
     private String name;
@@ -13,6 +19,7 @@ public class Order {
     private int quantity;
 
     // Getters and Setters
+    @NotBlank(message = "Name cannot be blank!")
     public String getName() {
         return name;
     }
@@ -21,6 +28,7 @@ public class Order {
         this.name = name;
     }
 
+    @Email(message = "Invalid email address!")
     public String getEmail() {
         return email;
     }
@@ -28,7 +36,7 @@ public class Order {
     public void setEmail(String email) {
         this.email = email;
     }
-
+    @NotBlank(message = "Phone Number cannot be blank!")
     public String getPhone() {
         return phone;
     }
@@ -40,7 +48,7 @@ public class Order {
     public String getAddress() {
         return address;
     }
-
+    @NotBlank(message = "Street Address cannot be blank!")
     public void setAddress(String address) {
         this.address = address;
     }
@@ -69,6 +77,7 @@ public class Order {
         this.price = price;
     }
 
+    @Min(value = 1, message = "Quantity must be at least 1")
     public int getQuantity() {
         return quantity;
     }

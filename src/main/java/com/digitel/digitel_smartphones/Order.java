@@ -78,7 +78,7 @@ public class Order {
     
  // Format phone price with two decimal places and append " CAD"
     public String getFormattedPhonePrice() {
-        DecimalFormat pf = new DecimalFormat("#,##0.00");
+        DecimalFormat pf = new DecimalFormat("$#,##0.00");
         return pf.format(price) + " CAD";
     }
 
@@ -97,7 +97,7 @@ public class Order {
     
  // Format the total price to 2 decimal places
     public String getFormattedTotalPrice() {
-        DecimalFormat df = new DecimalFormat("$#.00");
+        DecimalFormat df = new DecimalFormat("$#,##0.00");
         return df.format(calculateTotalPrice());
     }
 }

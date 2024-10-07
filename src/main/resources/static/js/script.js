@@ -1,3 +1,5 @@
+    
+    //Options for a Phone model
     const phoneModels = {
         "iPhone": [
             { value: "iPhone XR", text: "iPhone XR" },
@@ -26,6 +28,7 @@
 
     // Function to update the phone models dropdown based on the selected brand
     function updateModels() {
+		"use strict";
         const brandSelect = document.getElementById('brand');
         const modelSelect = document.getElementById('model');
         const selectedBrand = brandSelect.value;
@@ -50,3 +53,18 @@
         const brandSelect = document.getElementById('brand');
         brandSelect.addEventListener('change', updateModels);
     });
+
+    /*----------------------------------------------------*/
+    //Auto-Formatting (Input Masking) for phone number
+    const phoneInput = document.getElementById('phone');
+
+        phoneInput.addEventListener('input', function (e) {
+            let phoneNumber = e.target.value.replace(/\D/g, ''); // Remove all non-digit characters
+            if (phoneNumber.length > 3 && phoneNumber.length <= 6) {
+                phoneNumber = phoneNumber.slice(0, 3) + '-' + phoneNumber.slice(3);
+            } else if (phoneNumber.length > 6) {
+                phoneNumber = phoneNumber.slice(0, 3) + '-' + phoneNumber.slice(3, 6) + '-' + phoneNumber.slice(6, 10);
+            }
+            e.target.value = phoneNumber;
+        });
+    

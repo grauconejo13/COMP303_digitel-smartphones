@@ -19,12 +19,13 @@ public class OrderController {
 	        return "index";  // This corresponds to src/main/resources/templates/index.html
 	   }
 	   
-	
     @PostMapping("/submitOrder")
     public String submitOrder(@ModelAttribute Order order, Model model) {
-        double totalPrice = order.calculateTotalPrice();
-        model.addAttribute("order", order);
-        model.addAttribute("totalPrice", totalPrice);
+    	 String formattedTotalPrice = order.getFormattedTotalPrice();  // Get formatted total price
+    	 String formattedPhonePrice = order.getFormattedPhonePrice(); 
+    	    model.addAttribute("order", order);
+    	    model.addAttribute("totalPrice", formattedTotalPrice + " CAD");  // Pass formatted price to view
+    	    model.addAttribute("price", formattedPhonePrice);  // Add formatted phone price to the model
         return "show-order"; // Redirects to show-order.html
     }
 }

@@ -1,12 +1,11 @@
 package com.digitel.digitel_smartphones;
 
 //Vanessa Victorino - 301201653
-//01OCT24
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
-
+import java.text.DecimalFormat;
 
 public class Order {
     private String name;
@@ -76,6 +75,12 @@ public class Order {
     public void setPrice(double price) {
         this.price = price;
     }
+    
+ // Format phone price with two decimal places and append " CAD"
+    public String getFormattedPhonePrice() {
+        DecimalFormat pf = new DecimalFormat("#,##0.00");
+        return pf.format(price) + " CAD";
+    }
 
     @Min(value = 1, message = "Quantity must be at least 1")
     public int getQuantity() {
@@ -88,5 +93,11 @@ public class Order {
 
     public double calculateTotalPrice() {
         return price * quantity;
+    }
+    
+ // Format the total price to 2 decimal places
+    public String getFormattedTotalPrice() {
+        DecimalFormat df = new DecimalFormat("$#.00");
+        return df.format(calculateTotalPrice());
     }
 }
